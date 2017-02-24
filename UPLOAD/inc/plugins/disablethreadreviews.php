@@ -29,10 +29,10 @@ function disablethreadreviews_info()
 	global $db, $lang;
 	$lang->load('config_disablethreadreviews');
 	return array(
-		"name"			=>	$db->escape_string($lang->disablethreadreviews),
+		"name"		=>	$db->escape_string($lang->disablethreadreviews),
 		"description"	=>	$db->escape_string($lang->disablethreadreviews_desc),
-		"website"		=>	"https://github.com/SvePu/DisableThreadReviews",
-		"author"		=>	"SvePu",
+		"website"	=>	"https://github.com/SvePu/DisableThreadReviews",
+		"author"	=>	"SvePu",
 		"authorsite"	=> 	"https://github.com/SvePu",
 		"codename"      => 	"disablethreadreviews",
 		"version"       => 	"1.0",
@@ -47,36 +47,36 @@ function disablethreadreviews_activate()
 	$query_add = $db->simple_select("settinggroups", "COUNT(*) as rows");
 	$rows = $db->fetch_field($query_add, "rows");
 	$disablethreadreviews_group = array(
-		"name" 			=>	"disablethreadreviews",
-		"title" 		=>	$db->escape_string($lang->disablethreadreviews_settings_title),
+		"name" 		=>	"disablethreadreviews",
+		"title" 	=>	$db->escape_string($lang->disablethreadreviews_settings_title),
 		"description" 	=>	$db->escape_string($lang->disablethreadreviews_settings_title_desc),
-		"disporder"		=> 	$rows+1,
-		"isdefault" 	=>  0
+		"disporder"	=> 	$rows+1,
+		"isdefault" 	=>	0
 	);
 	$db->insert_query("settinggroups", $disablethreadreviews_group);
 	$gid = $db->insert_id();
 
 	$disablethreadreviews_1 = array(
-		'sid'           => 'NULL',
-		'name'			=> 'disablethreadreviews_enable',
-		'title'			=> $db->escape_string($lang->disablethreadreviews_enable_title),
-		'description'  	=> $db->escape_string($lang->disablethreadreviews_enable_title_desc),
-		'optionscode'  	=> 'onoff',
-		'value'        	=> '1',
-		'disporder'		=> 1,
-		"gid" 			=> (int)$gid
+		'sid'           =>	'NULL',
+		'name'		=>	'disablethreadreviews_enable',
+		'title'		=>	$db->escape_string($lang->disablethreadreviews_enable_title),
+		'description'  	=>	$db->escape_string($lang->disablethreadreviews_enable_title_desc),
+		'optionscode'  	=>	'onoff',
+		'value'        	=>	1,
+		'disporder'	=> 	1,
+		"gid" 		=>	(int)$gid
 	);
 	$db->insert_query('settings', $disablethreadreviews_1);
 
 
 	$disablethreadreviews_2 = array(
-		"name"			=> "disablethreadreviews_forums",
-		"title"			=> $db->escape_string($lang->disablethreadreviews_forums_title),
-		"description" 	=> $db->escape_string($lang->disablethreadreviews_forums_title_desc),
-		'optionscode'  	=> 'forumselect',
-		'value'        	=> '',
-		"disporder"		=> 2,
-		"gid" 			=> (int)$gid
+		"name"		=>	"disablethreadreviews_forums",
+		"title"		=>	$db->escape_string($lang->disablethreadreviews_forums_title),
+		"description" 	=>	$db->escape_string($lang->disablethreadreviews_forums_title_desc),
+		'optionscode'  	=>	'forumselect',
+		'value'        	=>	'',
+		"disporder"	=>	2,
+		"gid" 		=>	(int)$gid
 	);
 	$db->insert_query("settings", $disablethreadreviews_2);
 	rebuild_settings();
