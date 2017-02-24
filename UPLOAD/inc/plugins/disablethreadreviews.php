@@ -57,7 +57,6 @@ function disablethreadreviews_activate()
 	$gid = $db->insert_id();
 
 	$disablethreadreviews_1 = array(
-		'sid'           =>	'NULL',
 		'name'		=>	'disablethreadreviews_enable',
 		'title'		=>	$db->escape_string($lang->disablethreadreviews_enable_title),
 		'description'  	=>	$db->escape_string($lang->disablethreadreviews_enable_title_desc),
